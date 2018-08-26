@@ -1,0 +1,4 @@
+# Jenkins
+#[jenkins:vars]
+[jenkins]
+<insert IP here>
