@@ -7,24 +7,24 @@
       - blueocean
     jenkins_plugin_timeout: 120
 
- pre_tasks:
-   - include: helpers/java-8.yml
+  pre_tasks:
+    - include: helpers/java-8.yml
 
   tasks:
-   - name: Install jenkins
-     include_role:
-       name: geerlingguy.jenkins
+    - name: Install jenkins
+      include_role:
+        name: geerlingguy.jenkins
 
-   - name: Add jenkins user to Root group
-     usermod:
-       name: jenkins
-       groups: root
-       append: yes
+    - name: Add jenkins user to Root group
+      usermod:
+        name: jenkins
+        groups: root
+        append: yes
 
-   - name: Restart jenkins
-     service:
-       name: jenkins
-       state: restarted
+    - name: Restart jenkins
+      service:
+        name: jenkins
+        state: restarted
 
     - name: Install docker
       yum:
@@ -51,5 +51,5 @@
         username: mckdevopsdemo
         password: Purplec@t1197
         email: vibhav_gulati@mckinsey.com
- roles:
-   - geerlingguy.jenkins
+  roles:
+    - geerlingguy.jenkins

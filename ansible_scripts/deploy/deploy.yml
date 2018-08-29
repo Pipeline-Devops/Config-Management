@@ -1,0 +1,14 @@
+- hosts: application_server
+  become: yes
+  become_user: ec2-user
+
+  pre_tasks:
+    - name: Delete all pre-running docker containers
+      shell: docker rm -f $(docker ps -a -q)
+
+  tasks:
+    - name: Pull docker image
+      shell: docker pull docker.io/mckdevopsdemo/server:latest
+
+    - name: Start docker container
+      shell: docker run -d -p 3000:3000 --name server mckdevopsdemo/server:latest
